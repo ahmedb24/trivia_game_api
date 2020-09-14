@@ -1,8 +1,6 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
-//var MongoClient = require('mongodb').MongoClient;
-//var url = "mongodb+srv://admin:Yahoo.com24@cluster0.bbj0i.mongodb.net/trivia?retryWrites=true&w=majority";
 const mongoose = require('mongoose');
 const questionRouter = require('./routes/QuestionRoute.js');
 
@@ -19,29 +17,11 @@ app.use(questionRouter);
 
 const users = [{name: 'John', email:'John@gmail'}];
 
-var trivia = new Array();
-// MongoClient.connect(url, function(err, db) {
-// 	if (err) throw err;
-// 	console.log("Database created!");
-  
-// 	var dbo = db.db("trivia");
-// 	dbo.collection("questions").find({}).toArray(function(err, result) {
-// 	  if (err) throw err;
-// 	  for (let i = 0; i < result.length; i++) {
-// 		  trivia.push(result[i]);
-		  
-// 	  }
-// 	  db.close();
-// 	});
-// });
-
-console.log(trivia);
 app.get('/getQuestions', (req, res) => {
 	const questions = getQuestionsInJson();
 	res.json({ok: true, questions});
 	console.log(trivia);
 });
-
 
 var user = {
 	userGrade: {
