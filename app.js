@@ -7,7 +7,7 @@ const questionRouter = require('./routes/QuestionRoute.js');
 const app = express();
 const port = process.env.PORT || 4042;
 
-mongoose.connect('mongodb+srv://admin:Yahoo.com24@cluster0.bbj0i.mongodb.net/trivia?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://admin:com123123@cluster0.bbj0i.mongodb.net/trivia?retryWrites=true&w=majority', {
   useNewUrlParser: true
 });
 
