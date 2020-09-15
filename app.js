@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const questionRouter = require('./routes/QuestionRoute.js');
 
 const app = express();
-const port = process.env.PORT || 4042;
+const port = process.env.PORT || 4043;
 
 mongoose.connect('mongodb+srv://admin:com123123@cluster0.bbj0i.mongodb.net/trivia?retryWrites=true&w=majority', {
   useNewUrlParser: true

@@ -1,29 +1,9 @@
 const mongoose = require('mongoose');
+var trivia = require('trivia');
 
-const QuestionSchema = new mongoose.Schema([{
-  id: {
-    type: Number,
-  },
-  question: {
-    type: String,
-  },
-  A: {
-    type: String,
-  },
-  B: {
-    type: String,
-  },
-  C: {
-    type: String,
-  },
-  D: {
-    type: String,
-  },
-  answer: {
-    type: String,
-  },
-  
-}]);
+var QuestionSchema = new mongoose.Schema({
+  questionsArray: []
+});
 
-const Question = mongoose.model("Question", QuestionSchema);
+var Question = mongoose.model("Question", QuestionSchema);
 module.exports = Question;
