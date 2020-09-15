@@ -1,5 +1,5 @@
 const express = require('express');
-const trivia = require('trivia');
+const trivia = require('../trivia');
 const QuestionModel = require('../models/Question');
 const app = express();
 
