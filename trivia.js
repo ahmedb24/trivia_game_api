@@ -360,3 +360,5 @@ var trivia = [
     "answer": "B"
   }
 ];
+
+module.exports = trivia;

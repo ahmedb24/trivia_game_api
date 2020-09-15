@@ -1,5 +1,5 @@
 const express = require('express');
-//const trivia = require('../trivia');
+const trivia = require('../trivia');
 const QuestionModel = require('../models/question');
 const app = express();
 
@@ -40,9 +40,9 @@ app.post('/getQuestions', (req, res) => {
   });
 
 function initialiseQuestions(questionModel) {
-	// for (let i = 0; i < trivia.length; i++) {
-	// 	questionModel.questionsArray.push(trivia[i]);
-	// }
+	for (let i = 0; i < trivia.length; i++) {
+		questionModel.questionsArray.push(trivia[i]);
+	}
 }
 
 module.exports = app
