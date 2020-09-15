@@ -1,6 +1,6 @@
 const express = require('express');
 const trivia = require('../trivia');
-const QuestionModel = require('../models/Question');
+const QuestionModel = require('../models/question');
 const app = express();
 
 app.get('/getQuestions', (req, res) => {
