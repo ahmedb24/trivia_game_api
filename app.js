@@ -17,12 +17,6 @@ app.use(questionRouter);
 
 const users = [{name: 'John', email:'John@gmail'}];
 
-app.get('/getQuestions', (req, res) => {
-	const questions = getQuestionsInJson();
-	res.json({ok: true, questions});
-	console.log(trivia);
-});
-
 var user = {
 	userGrade: {
 		numOfQuestionsAnswered: 0,

@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-var trivia = require('trivia');
 
 var QuestionSchema = new mongoose.Schema({
   questionsArray: []
