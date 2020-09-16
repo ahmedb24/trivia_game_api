@@ -1,11 +1,11 @@
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const questionRouter = require('./routes/QuestionRoute.js');
+const userRouter = require('./routes/UserRoute');
 
 const app = express();
-const port = process.env.PORT || 4043;
+const port = process.env.PORT || 4041;
 
 mongoose.connect('mongodb+srv://admin:com123123@cluster0.bbj0i.mongodb.net/trivia?retryWrites=true&w=majority', {
   useNewUrlParser: true
@@ -14,38 +14,11 @@ mongoose.connect('mongodb+srv://admin:com123123@cluster0.bbj0i.mongodb.net/trivi
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 app.use(questionRouter);
+app.use(userRouter);
 
 const users = [{name: 'John', email:'John@gmail'}];
 
-var user = {
-	userGrade: {
-		numOfQuestionsAnswered: 0,
-		numOfCorrectQuestions: 0
-	}
-}
 
-app.post('/submitSolution', (req, res) => {
-	userGrade.numOfQuestionsAnswered++
-	
-	//extract id, grade and get first 10 random questions
-	const {id, grade} = req.body;
-	let questions =  getQuestionsInJson()
-	console.log(questions);
-
-	//find question matching the question user answered
-	var question = questions.filter((currentQuestion) => {
-		return currentQuestion.id === id; 
-	})[0];
-
-	//handle grading
-	if(question.answer === grade) {
-		console.log('pass');
-		userGrade.numOfCorrectQuestions++
-	}
-	console.log(userGrade);
-	res.end();
-	//res.send({userGrade.numOfQuestionsAnswered, userGrade.numOfCorrectQuestions});
-});
 
 
 

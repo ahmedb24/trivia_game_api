@@ -1,6 +1,7 @@
 const express = require('express');
 const trivia = require('../utils/trivia');
 const QuestionModel = require('../models/question');
+const { generateRandomNumbers } = require("../utils/generateRandomNumbers");
 const app = express();
 
 app.get('/getQuestions', (req, res) => {
@@ -19,15 +20,6 @@ function getQuestionsInJson(questionArray) {
 		questions.push(questionArray[randomNum]);
 	}
 	return questions;
-}
-
-function generateRandomNumbers() {
-	let set = new Set()	
-	while (set.size < 10) {
-		var randNumber = Math.floor(Math.random() * 10);
-		set.add(randNumber);
-	}
-	return set;
 }
 
 app.post('/getQuestions', (req, res) => {
