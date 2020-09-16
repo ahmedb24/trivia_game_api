@@ -49,7 +49,7 @@ app.post('/users/:userId/submitSolution', (req, res) => {
             UserModel.findOneAndUpdate(filter, update, (err, result) => {
                 if (err) throw err;
                 let userGradeInPercentage = calculateUserPercentage(currentNumOfCorrectQuestions);
-                res.send('Your score in percentage is ' + userGradeInPercentage + '%');
+                res.send('Your score is ' + userGradeInPercentage + '%');
             });
         });
     });	
