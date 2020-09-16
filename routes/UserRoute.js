@@ -6,7 +6,7 @@ const QuestionModel = require('../models/question');
 
 const { generateRandomNumbers } = require("../utils/generateRandomNumbers");
 
-app.post('/users', (req, res) => {
+app.post('/user/create', (req, res) => {
     const {userId, userGrade} = req.body;
     const {numOfQuestionsAnswered, numOfCorrectQuestions} = userGrade;
     if (userId && numOfQuestionsAnswered && numOfCorrectQuestions) {
@@ -30,13 +30,11 @@ app.post('/users/:userId/submitSolution', (req, res) => {
         let randomQuestions = getRandomQuestions(questionsArray)
         let userQuestion =  randomQuestions.filter((question) => {
             return question.id === questionId;
-        });
+        })[0];
 
       //find current user and make update of numOfQuestionsAnswered and 
       //numOfCorrectQuestions fields accordingly
       UserModel.findOne({'userId': userId}, (err, result) => {
-            console.log(result.userGrade.numOfQuestionsAnswered);
-
             let currentNumOfQuestionsAnswered = result.userGrade.numOfQuestionsAnswered + 1
             let currentNumOfCorrectQuestions = userQuestion.answer === userAnswer ? 
                     result.userGrade.numOfCorrectQuestions + 1 :
@@ -47,11 +45,11 @@ app.post('/users/:userId/submitSolution', (req, res) => {
                 'userGrade.numOfQuestionsAnswered': currentNumOfQuestionsAnswered,
                 'userGrade.numOfCorrectQuestions' : currentNumOfCorrectQuestions
             }
-
+            //update user fields and respond with user's score in percentage
             UserModel.findOneAndUpdate(filter, update, (err, result) => {
                 if (err) throw err;
                 let userGradeInPercentage = calculateUserPercentage(currentNumOfCorrectQuestions);
-                res.send('Your score in percentage is ' + userGradeInPercentage);
+                res.send('Your score in percentage is ' + userGradeInPercentage + '%');
             });
         });
     });	
